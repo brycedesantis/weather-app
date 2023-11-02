@@ -20,12 +20,30 @@ function displayWeather(data) {
 	weatherInfo.innerHTML = `
 	<h1 id='city'>${data.location.name}</h1>
 	<h4 id='country'>${data.location.region}, ${data.location.country}</h4>
-	<h3>${data.current.condition.text} <img src='${data.current.condition.icon}' /></h3>
+	<img src='${data.current.condition.icon}' />
+	<h3>${data.current.condition.text}</h3>
 	<p>Humidity: ${data.current.humidity}</p>
-	<p>Temperture: ${data.current.temp_f}°F</p>
-	<p>Feels like: ${data.current.feelslike_f}°F</p>
-	<p>Temperture: ${data.current.temp_c}°C</p>
-	<p>Feels like: ${data.current.feelslike_c}°C</p>`
+	<div id='fah'>
+		<p class='temperature'>Temperture: ${data.current.temp_f}°F</p>
+		<p class='feels-like'>Feels like: ${data.current.feelslike_f}°F</p>
+	</div>
+	<div id='cel' class='inactive'>
+	<p class='temperature'>Temperture: ${data.current.temp_c}°C</p>
+	<p class='feels-like'>Feels like: ${data.current.feelslike_c}°C</p>
+	</div>
+	<button onclick=changeTemp()>Change Temperature</button>`
+}
+
+function changeTemp() {
+	let fahrenheit = document.querySelector("#fah")
+	let celsius = document.querySelector("#cel")
+	if (fahrenheit.className === "inactive") {
+		fahrenheit.classList.remove("inactive")
+		celsius.classList.add("inactive")
+	} else {
+		celsius.classList.remove("inactive")
+		fahrenheit.classList.add("inactive")
+	}
 }
 
 function getLocation() {
