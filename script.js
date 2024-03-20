@@ -4,7 +4,7 @@ async function getWeather(location) {
 
 	const weatherInfo = document.querySelector(".weather-info")
 	try {
-		const response = await fetch(APIUrl, { mode: "no-cors" })
+		const response = await fetch(APIUrl, { mode: "cors" })
 		const weatherDate = await response.json()
 		displayWeather(weatherDate)
 		console.log(weatherDate)
