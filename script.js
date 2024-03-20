@@ -1,6 +1,6 @@
 async function getWeather(location) {
 	const APIKey = "2b2c0f94c91440c7be6173147230111"
-	const APIUrl = `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}`
+	const APIUrl = `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}`
 
 	const weatherInfo = document.querySelector(".weather-info")
 	try {
